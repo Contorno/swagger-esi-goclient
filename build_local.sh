@@ -20,7 +20,7 @@ java -jar ../swagger-esi-goclient/swagger-codegen-cli.jar generate -o ../goesi/e
 
 echo fix slices of structs ESI
 # Fix slices of struct types
-sed -i 's/REMOVEME\[\]//g' ../goesi/esi/*.*
+sed -i.bk 's/REMOVEME\[\]//g' ../goesi/esi/*.*
 
 # Generate models first and JSON code second because there is no easy way to glob for model files only
 echo Build models
@@ -31,12 +31,12 @@ find ../goesi/meta/ -type f -name "*.go" -exec echo processing {} \; -exec easyj
 echo "regenerate"
 java -jar ../swagger-esi-goclient/swagger-codegen-cli.jar generate -o ../goesi/meta -t ../swagger-esi-goclient/template -l go -i https://esi.evetech.net/swagger.json -DpackageName=meta
 
-sed -i 's/contorno\/optional/contorno\/goesi\/optional/g' ../goesi/esi/*.*
-sed -i 's/contorno\/optional/contorno\/goesi\/optional/g' ../goesi/meta/*.*
+sed -i.bk 's/contorno\/optional/contorno\/goesi\/optional/g' ../goesi/esi/*.*
+sed -i.bk 's/contorno\/optional/contorno\/goesi\/optional/g' ../goesi/meta/*.*
 
 echo fix slices of structs meta
 # Fix slices of struct types
-sed -i 's/REMOVEME\[\]//g' ../goesi/meta/*.*
+sed -i.bk 's/REMOVEME\[\]//g' ../goesi/meta/*.*
 
 echo format code
 set -e
