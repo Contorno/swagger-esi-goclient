@@ -11,7 +11,7 @@ cd ..
 mkdir mock-esi
 cd mock-esi
 git init
-git remote add upstream "https://${GH_TOKEN}@github.com/antihax/mock-esi.git"
+git remote add upstream "https://${GH_TOKEN}@github.com/contorno/mock-esi.git"
 git fetch upstream
 git pull upstream HEAD
 touch version.txt
@@ -32,13 +32,13 @@ cd ..
 mkdir goesi
 cd goesi
 git init
-git remote add upstream "https://${GH_TOKEN}@github.com/antihax/goesi.git"
+git remote add upstream "https://${GH_TOKEN}@github.com/contorno/goesi.git"
 git fetch upstream
 git pull upstream HEAD
 go get -v
 go install golang.org/x/tools/cmd/goimports@latest
 go get -u github.com/mailru/easyjson/...
-go get github.com/antihax/optional
+go get github.com/contorno/optional
 
 rm -rf ../goesi/esi/*
 rm -rf ../goesi/esi/docs/*
@@ -68,8 +68,8 @@ find ../goesi/meta/ -type f -name "*.go" -exec echo processing {} \; -exec easyj
 echo "regenerate"
 java -jar ../swagger-esi-goclient/swagger-codegen-cli.jar generate -o ../goesi/meta -t ../swagger-esi-goclient/template -l go -i https://esi.evetech.net/swagger.json -DpackageName=meta
 
-sed -i 's/antihax\/optional/antihax\/goesi\/optional/g' ../goesi/esi/*.*
-sed -i 's/antihax\/optional/antihax\/goesi\/optional/g' ../goesi/meta/*.*
+sed -i 's/contorno\/optional/contorno\/goesi\/optional/g' ../goesi/esi/*.*
+sed -i 's/contorno\/optional/contorno\/goesi\/optional/g' ../goesi/meta/*.*
 
 echo fix slices of structs meta
 # Fix slices of struct types
