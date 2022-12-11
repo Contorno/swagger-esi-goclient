@@ -1,4 +1,8 @@
 #!/bin/bash
+
+export GOSUMDB=off
+export GOPRIVATE=*contorno*,*Contorno*
+
 go get -v
 go get -u github.com/mailru/easyjson/...
 go get github.com/contorno/optional
